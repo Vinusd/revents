@@ -20,12 +20,12 @@ export function verifyAuth(){
                 const profileRef = getUserProfile(user.uid);
                 profileRef.onSnapshot(snapshot =>{
                     dispatch(listenToCurrentUserProfile(dataFromSnapshot(snapshot)));
-                    dispatch({type:APP_LOADED})
+                    dispatch({type: APP_LOADED})
                 })
                 
             }else{
                 dispatch(signOutUser())
-                dispatch({type:APP_LOADED})
+                dispatch({type: APP_LOADED})
             }
         })
     }
@@ -34,5 +34,5 @@ export function verifyAuth(){
 export function signOutUser(){
     return {
         type: SIGN_OUT_USER,
-    }
+    };
 }
