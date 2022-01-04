@@ -14,7 +14,7 @@ export default function AboutTab({profile,isCurrentUser}) {
                 <Grid.Column width={16}>
                     <Header floated='left' icon='user' content={`About ${profile.displayName}`}/>
 
-                    {!isCurrentUser && 
+                    {isCurrentUser && 
                     <Button onClick={()=>setEditMode(!editMode)} floated='right' basic content={editMode ? 'Cancel': 'Edit'}/>}
                 </Grid.Column>
                 <Grid.Column width={16}>

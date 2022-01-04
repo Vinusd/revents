@@ -16,7 +16,7 @@ export function verifyAuth(){
     return function (dispatch){
         return firebase.auth().onAuthStateChanged(user => {
             if(user){
-                dispatch(signInUser(user))
+                dispatch(signInUser(user));
                 const profileRef = getUserProfile(user.uid);
                 profileRef.onSnapshot(snapshot =>{
                     dispatch(listenToCurrentUserProfile(dataFromSnapshot(snapshot)));

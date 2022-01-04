@@ -3,7 +3,7 @@ import { Button, Divider, Grid, Header, Item, Reveal, Segment, Statistic } from 
 
 
 
-export default function ProfileHeader({profile,isCurrentUser}) {
+export default function ProfileHeader({ profile,isCurrentUser }) {
     return (
        <Segment>
            <Grid>
@@ -22,8 +22,8 @@ export default function ProfileHeader({profile,isCurrentUser}) {
                         <Statistic label='Followers' value={10}/>
                         <Statistic label='Following' value={5}/>
                     </Statistic.Group>
-                    {!isCurrentUser && 
-                    <>
+                    { !isCurrentUser && 
+                   (<>
                     <Divider />
                         <Reveal animated='move'>
                             <Reveal.Content visible style={{width:'100%'}}>
@@ -33,7 +33,8 @@ export default function ProfileHeader({profile,isCurrentUser}) {
                                 <Button basic fluid color='red' content='Unfollow'/>
                             </Reveal.Content>
                         </Reveal>
-                    </>}
+                    </>)
+                    }
                </Grid.Column>
            </Grid>
        </Segment>

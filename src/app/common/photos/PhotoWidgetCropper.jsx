@@ -13,6 +13,7 @@ export default function PhotoWidgetCropper({setImage,imagePreview}) {
     }, 'image/jpeg');
   }
 
+  
   return (
     <Cropper
       ref={cropper}

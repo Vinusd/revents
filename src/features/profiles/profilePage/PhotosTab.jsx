@@ -54,7 +54,7 @@ export default function PhotosTab({ profile,isCurrentUser}) {
             <Grid>
                 <Grid.Column width={16}>
                     <Header floated='left' icon='user' content={'Photos'}/>
-                    {!isCurrentUser && 
+                    {isCurrentUser && 
                     (<Button onClick={()=>setEditMode(!editMode)} floated='right' basic content={editMode ? 'Cancel' : 'Add Photo'}/>)}
                 </Grid.Column>
                 <Grid.Column width={16}>

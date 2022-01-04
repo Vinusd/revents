@@ -15,10 +15,10 @@ export async function registerInFirebase(creds){
         const result = await firebase.auth().createUserWithEmailAndPassword(creds.email,creds.password);
         await result.user.updateProfile({
             displayName:creds.displayName,
-        });
+        })
         return await setUserProfileData(result.user);
     }catch(error){
-        throw error
+        throw error;
     }
 }
 
@@ -32,7 +32,7 @@ export async function socialLogin(selectedProvider){
     }
     try{
         const result = await firebase.auth().signInWithPopup(provider)
-        console.log(result)
+        console.log(result);
         if(result.additionalUserInfo.isNewUser){
             await setUserProfileData(result.user);
         }
@@ -41,7 +41,7 @@ export async function socialLogin(selectedProvider){
     }
 }
 
-export function updatUserPassword(creds){
+export function updateUserPassword(creds){
      const user=firebase.auth().currentUser;
      return user.updatePassword(creds.newPassword1);
 }

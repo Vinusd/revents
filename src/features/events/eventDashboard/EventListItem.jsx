@@ -16,7 +16,7 @@ export default function EventListItem({event}) {
                             <Item.Content>
                                 <Item.Header content={event.title}/>
                                 <Item.Description>
-                                    Hosted by {event.hostedBy}
+                                    Hosted by <Link as={Link} to={`/profile/${event.hostUid}`}> {event.hostedBy} </Link>
                                 </Item.Description>
                                 {event.isCancelled && (
                                     <Label

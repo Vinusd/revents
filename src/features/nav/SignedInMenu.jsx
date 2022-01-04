@@ -29,7 +29,7 @@ export default function SignedInMenu() {
                         <Dropdown.Item 
                             onClick={handleSignOut}
                             text='Sign out' 
-                            icon='power '
+                            icon='power'
                         />
                      </Dropdown.Menu>
                  </Dropdown>

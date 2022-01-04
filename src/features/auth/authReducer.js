@@ -23,9 +23,9 @@ export default function authReducer(state=initialState,{type,payload}){
                 return{
                     ...state,
                     authenticated:false,
-                    currentUser:null
+                    currentUser:null,
                 }
             default:
-                return state
+                return state;
     }
 }

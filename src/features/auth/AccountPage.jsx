@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 import MyTextInput from '../../app/common/form/MyTextInput'
 import {Link} from 'react-router-dom'
 import {useSelector} from 'react-redux'
-import { updatUserPassword } from '../../app/firestore/firebaseService'
+import { updateUserPassword } from '../../app/firestore/firebaseService'
 
 export default function AccountPage() {
 const {currentUser} = useSelector((state)=>state.auth);
@@ -13,7 +13,7 @@ const {currentUser} = useSelector((state)=>state.auth);
     return (
         <Segment>
             <Header dividing size='large' content='Account' />
-            {currentUser.providerId==='password' &&
+            {currentUser.providerId ==='password' &&
             <div>
                 <Header color='teal' sub content='Change Password'/>
                 <p>
@@ -22,17 +22,17 @@ const {currentUser} = useSelector((state)=>state.auth);
                 <Formik initialValues={{newPassword1:'',newPassword2:''}}
                 validationSchema={Yup.object({
                     newPassword1:Yup.string().required('Password is required'),
-                    newPassword2:Yup.string().oneOf([Yup.ref('newPassword1'),null],'Password do not match')
+                    newPassword2:Yup.string().oneOf([Yup.ref('newPassword1'),null],'Password do not match'),
                 })}
-                onSubmit={async(values,{setSubimitting,setErrors})=>{
+                onSubmit={async(values,{setSubmitting,setErrors})=>{
                     try{
-                        await updatUserPassword(values);
+                        await updateUserPassword(values);
                        
                     }catch(error){
                         setErrors({auth:error.message});
                         
                     }finally{
-                        setSubimitting(false)
+                        setSubmitting(false)
                     }
                 }}
                 >
@@ -57,10 +57,10 @@ const {currentUser} = useSelector((state)=>state.auth);
             <div>
                 <Header color='teal' sub content='Facebook account'/>
                 <p>Please visit Facebook to update your account</p>
-                <Button icon='facebook' color='facebook' as={Link} to='https://facebok.com' content='Go to Facebook'/>
+                <Button icon='facebook' color='facebook' as={Link} to='https://facebook.com' content='Go to Facebook'/>
             </div>
         }
-        {currentUser.providerId==='google.com' &&
+        {currentUser.providerId ==='google.com' &&
             <div>
                 <Header color='teal' sub content='Google account'/>
                 <p>Please visit Google to update your account</p>
