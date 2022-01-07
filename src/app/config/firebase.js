@@ -16,7 +16,9 @@ const firebaseConfig = {
   
     messagingSenderId: "979359557659",
   
-    appId: "1:979359557659:web:04c85dad57eb6c94f970be"
+    appId: "1:979359557659:web:04c85dad57eb6c94f970be",
+
+    databaseURL:"https://reventscourse-87062-default-rtdb.asia-southeast1.firebasedatabase.app"
   
 }
 
