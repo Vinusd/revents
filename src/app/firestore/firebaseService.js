@@ -33,7 +33,7 @@ export async function socialLogin(selectedProvider){
     if (selectedProvider ==='facebook'){
         provider = new firebase.auth.FacebookAuthProvider();
     }
-    if(selectedProvider==='google'){
+    if(selectedProvider === 'google'){
         provider = new firebase.auth.GoogleAuthProvider();
     }
     try{
@@ -81,3 +81,9 @@ export function addEventChatComment(eventId,values){
 export function getEventChatRef(eventId){
     return firebase.database().ref(`chat/${eventId}`).orderByKey();
 }
+
+export function getUserFeedRef(){
+    const user  = firebase.auth().currentUser;
+    return firebase.database().ref(`posts/${user.uid}`).orderByKey().limitToLast(5)
+}
+

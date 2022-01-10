@@ -23,7 +23,7 @@ export function asyncActionError(error){
     }
 }
 
-const initialState ={
+const initialState = {
     loading:false,
     error:null,
     initialized:false
