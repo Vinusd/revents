@@ -1,10 +1,12 @@
 import React from 'react'
 import {useState} from 'react'
 import { toast } from 'react-toastify'
+import {useSelector} from 'react-redux'
 import {Segment,Item,Image,Header,Button} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 import { format } from 'date-fns';
 import { addUserAttendance ,cancelUserAttendance} from '../../../app/firestore/firestoreService';
+import UnauthModal from '../../auth/UnauthModal'
 
 const eventImageStyle = {
     filter: 'brightness(30%)'
@@ -22,6 +24,8 @@ const eventImageTextStyle = {
 export default function EventDetailedHeader({event,isHost,isGoing}) {
     
     const [loading,setLoading] = useState(false); 
+    const {authenticated} = useSelector(state=>state.auth);
+    const [modalOpen,setModalOpen] =useState(false)
     async function handleUserJoinEvent(){
         setLoading(true);
         try{
@@ -45,8 +49,11 @@ export default function EventDetailedHeader({event,isHost,isGoing}) {
     }
 
     return (
-        <div>
-            <Segment.Group>
+<>
+        {modalOpen && 
+            <UnauthModal setModalOpen={setModalOpen}/>
+        }
+        <Segment.Group>
     <Segment basic attached="top" style={{padding: '0'}}>
         <Image src={`/assets/categoryImages/${event.category}.jpg`} fluid
         style={eventImageStyle} />
@@ -74,7 +81,7 @@ export default function EventDetailedHeader({event,isHost,isGoing}) {
         {!isHost && (
              <>
              {isGoing ?( <Button loading = {loading} onClick={handleUserLeaveEvent} >Cancel My Place</Button>) : 
-             (<Button loading = {loading} onClick={handleUserJoinEvent} color="teal">JOIN THIS EVENT</Button>)}  
+             (<Button loading = {loading} onClick={authenticated ? handleUserJoinEvent : ()=>setModalOpen(true)} color="teal">JOIN THIS EVENT</Button>)}  
              </>
         )}
        
@@ -85,7 +92,8 @@ export default function EventDetailedHeader({event,isHost,isGoing}) {
         </Button>)}
     </Segment>
 </Segment.Group>
-        </div>
+
+</>
     )
 }
 

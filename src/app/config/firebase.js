@@ -6,7 +6,7 @@ import 'firebase/compat/auth'
 import 'firebase/compat/storage'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCDGpEk_MLJGwQ-eb7oiNcMSCOtVaVU614",
+    apiKey: process.env.REACT_APP_API_KEY,
 
     authDomain: "reventscourse-87062.firebaseapp.com",
   

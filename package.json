@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "connected-react-router": "^6.9.2",
     "cuid": "^2.1.8",
     "date-fns": "^2.27.0",
     "firebase": "^9.6.1",
